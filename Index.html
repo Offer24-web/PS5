@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlayStation 5 Console | PlayStation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAdVBMVEX////29vbe3t7x8fHW1tZubW51dHWXl5fBwMHs7OxLSUkAAAAQCg0uLS5VU1SIh4jQ0NBPTk8bGBknJCUeHR1/fn4dGRtDQUFpaGj4+PgUEBGfnp7GxsaVlJRjYGGmpaVbWVr6+vrm5ua3treurq42NDV7enpcaE0SAAAA2ElEQVR4Ac3PRWKAMBQEUBySwZ24tfc/Yt3dO9v3NfrxxEn6MmZ5UVbkJaSom7brn8dhnEZgXuJncR03UgD78SwyGnHMEC+hxITlNVSfxu4l7ICaPJIjk9qMbItSzVN72DtJnaao5T4ySnq9DM3QCXLlxBczsElvVtYGYN5lx0CrC40lw7z4jIjhHHXLhctCAyzpJQIr9zIv1cVYl4RlA05kcm7nKjo6ARs/Hzskp7QGlHe3J9kjTlObnTcM+qLp/BjnH/1DgmnDkl2WV0sSPc7ttPi8+//lDAYSExJQE99UAAAAAElFTkSuQmCC" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ps-blue: #0070f3;
+            --ps-blue-dark: #0056b3;
+            --ps-blue-light: #4da3ff;
+            --ps-gradient: linear-gradient(135deg, #0a0e1a 0%, #1a2332 25%, #2d4a6b 60%, #4a6fa5 100%);
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.8);
+            --text-muted: rgba(255, 255, 255, 0.6);
+            --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.3);
+            --shadow-xl: 0 25px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: var(--ps-gradient);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        /* Enhanced Background Effects */
+        .bg-effects {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .bg-particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--ps-blue-light);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: float-particle 8s ease-in-out infinite;
+        }
+
+        .bg-glow {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 112, 243, 0.15) 0%, transparent 70%);
+            animation: pulse-glow 6s ease-in-out infinite;
+            filter: blur(1px);
+        }
+
+        .bg-glow-1 {
+            width: 400px;
+            height: 400px;
+            top: 10%;
+            right: 5%;
+            animation-delay: 0s;
+        }
+
+        .bg-glow-2 {
+            width: 300px;
+            height: 300px;
+            top: 50%;
+            right: 25%;
+            animation-delay: 3s;
+        }
+
+        .bg-glow-3 {
+            width: 200px;
+            height: 200px;
+            top: 70%;
+            left: 10%;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes float-particle {
+            0%, 100% { 
+                transform: translateY(0px) translateX(0px);
+                opacity: 0.3;
+            }
+            25% { 
+                transform: translateY(-20px) translateX(10px);
+                opacity: 0.8;
+            }
+            50% { 
+                transform: translateY(-40px) translateX(-5px);
+                opacity: 0.6;
+            }
+            75% { 
+                transform: translateY(-20px) translateX(-10px);
+                opacity: 0.9;
+            }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { 
+                opacity: 0.3;
+                transform: scale(1);
+            }
+            50% { 
+                opacity: 0.7;
+                transform: scale(1.2);
+            }
+        }
+
+        /* Enhanced Header */
+        .header {
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--glass-border);
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            background: rgba(0, 0, 0, 0.98);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .sony-bar {
+            background: linear-gradient(90deg, #000 0%, #1a1a1a 100%);
+            padding: 6px 0;
+            text-align: right;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sony-bar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: shine 3s ease-in-out infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .sony-bar .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .sony-logo {
+            color: white;
+            font-size: 11px;
+            font-weight: 700;
+            text-decoration: none;
+            letter-spacing: 4px;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .sony-logo:hover {
+            color: var(--ps-blue-light);
+            text-shadow: 0 0 10px var(--ps-blue);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .playstation-logo {
+            width: 50px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--ps-blue) 0%, var(--ps-blue-light) 100%);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 12px;
+            color: white;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .playstation-logo::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s ease;
+            opacity: 0;
+        }
+
+        .playstation-logo:hover::before {
+            opacity: 1;
+            animation: logo-shine 0.6s ease;
+        }
+
+        @keyframes logo-shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-menu li {
+            position: relative;
+        }
+
+        .nav-menu li a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 400;
+            padding: 24px 0;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu li a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--ps-blue), var(--ps-blue-light));
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu li a:hover {
+            color: var(--ps-blue-light);
+            transform: translateY(-2px);
+        }
+
+        .nav-menu li a:hover::before {
+            width: 100%;
+        }
+
+        .nav-menu li a::after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 3px solid transparent;
+            border-right: 3px solid transparent;
+            border-top: 3px solid currentColor;
+            margin-left: 6px;
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+
+        .nav-menu li a:hover::after {
+            transform: translateY(-1px);
+            opacity: 1;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .sign-in-btn {
+            background: linear-gradient(135deg, var(--ps-blue) 0%, var(--ps-blue-light) 100%);
+            color: white;
+            padding: 10px 24px;
+            border: none;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: capitalize;
+            box-shadow: 0 4px 15px rgba(0, 112, 243, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sign-in-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .sign-in-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 112, 243, 0.4);
+        }
+
+        .sign-in-btn:hover::before {
+            left: 100%;
+        }
+
+        .search-container {
+            position: relative;
+        }
+
+        .search-input {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 10px 40px 10px 16px;
+            color: white;
+            font-size: 14px;
+            width: 240px;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .search-input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--ps-blue);
+            width: 280px;
+            box-shadow: 0 0 20px rgba(0, 112, 243, 0.3);
+        }
+
+        .search-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .search-btn {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 16px;
+            padding: 4px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .search-btn:hover {
+            color: var(--ps-blue-light);
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        /* Enhanced Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .mobile-menu-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+
+        /* Enhanced Main Content */
+        .main-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 24px;
+            min-height: calc(100vh - 160px);
+            position: relative;
+        }
+
+        .error-content {
+            flex: 1;
+            max-width: 600px;
+            z-index: 2;
+            animation: slideInLeft 1s ease-out;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .error-title {
+            font-size: 35px;
+            font-weight: 300;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+            line-height: 1.1;
+            background: linear-gradient(135deg, #ffffff 0%, var(--ps-blue-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: titleGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes titleGlow {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.2); }
+        }
+
+        .error-subtitle {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: var(--text-primary);
+            line-height: 1.2;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .error-description {
+            font-size: 18px;
+            line-height: 1.7;
+            margin-bottom: 40px;
+            color: var(--text-secondary);
+            max-width: 500px;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .search-btn-main {
+            background: var(--glass-bg);
+            border: 2px solid var(--glass-border);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 24px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(15px);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1s ease-out 0.9s both;
+        }
+
+        .search-btn-main::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .search-btn-main:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: var(--ps-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 112, 243, 0.3);
+        }
+
+        .search-btn-main:hover::before {
+            left: 100%;
+        }
+
+        .astro-bot-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            min-height: 600px;
+            animation: slideInRight 1s ease-out 0.5s both;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .astro-bot-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .astro-bot-glow {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0, 112, 243, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: rotate 20s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .astro-bot-image {
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+            filter: drop-shadow(var(--shadow-xl));
+            animation: float 6s ease-in-out infinite;
+            z-index: 2;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .astro-bot-image:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 30px 60px rgba(0, 112, 243, 0.4));
+        }
+
+        @keyframes float {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg); 
+            }
+            25% { 
+                transform: translateY(-15px) rotate(1deg); 
+            }
+            50% { 
+                transform: translateY(-30px) rotate(0deg); 
+            }
+            75% { 
+                transform: translateY(-15px) rotate(-1deg); 
+            }
+        }
+
+        /* Enhanced Footer - Matching Original */
+        .footer {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+            padding: 40px 0;
+            border-top: 1px solid var(--glass-border);
+            position: relative;
+            margin-top: 60px;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--ps-blue), transparent);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .footer-logo .playstation-logo {
+            width: 80px;
+            height: 50px;
+            font-size: 16px;
+        }
+
+        .footer-icons {
+            display: flex;
+            gap: 24px;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .footer-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            backdrop-filter: blur(15px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--ps-blue) 0%, var(--ps-blue-light) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-icon:hover {
+            transform: translateY(-5px) scale(1.1);
+            border-color: var(--ps-blue);
+            box-shadow: 0 10px 30px rgba(0, 112, 243, 0.3);
+        }
+
+        .footer-icon:hover::before {
+            opacity: 0.2;
+        }
+
+        .footer-icon span {
+            font-size: 24px;
+            z-index: 1;
+            position: relative;
+        }
+
+        /* Loading Animation */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--ps-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top: 3px solid var(--ps-blue);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Enhanced Responsive Design */
+        @media (max-width: 1200px) {
+            .nav-container {
+                padding: 0 20px;
+            }
+            
+            .main-content {
+                padding: 50px 20px;
+            }
+            
+            .error-title {
+                font-size: 28px;
+            }
+            
+            .error-subtitle {
+                font-size: 18px;
+            }
+
+            .nav-menu {
+                gap: 24px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .main-content {
+                flex-direction: column;
+                text-align: center;
+                padding: 40px 20px;
+                gap: 40px;
+            }
+
+            .error-content {
+                max-width: 100%;
+            }
+
+            .astro-bot-container {
+                min-height: 500px;
+            }
+
+            .nav-menu {
+                gap: 20px;
+            }
+
+            .nav-menu li a {
+                font-size: 15px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(0, 0, 0, 0.98);
+                flex-direction: column;
+                padding: 24px 20px;
+                gap: 16px;
+                backdrop-filter: blur(20px);
+                border-top: 1px solid var(--glass-border);
+                animation: slideDown 0.3s ease;
+                box-shadow: var(--shadow-lg);
+            }
+
+            @keyframes slideDown {
+                from {
+                    opacity: 0;
+                    transform: translateY(-20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu li a {
+                padding: 12px 0;
+                font-size: 16px;
+                justify-content: center;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-actions {
+                gap: 12px;
+            }
+
+            .search-input {
+                width: 180px;
+            }
+
+            .search-input:focus {
+                width: 220px;
+            }
+
+            .error-title {
+                font-size: 25px;
+            }
+
+            .error-subtitle {
+                font-size: 18px;
+            }
+
+            .error-description {
+                font-size: 16px;
+            }
+
+            .astro-bot-container {
+                min-height: 400px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 24px;
+            }
+
+            .footer-icons {
+                gap: 20px;
+            }
+
+            .footer-icon {
+                width: 48px;
+                height: 48px;
+            }
+
+            .footer-icon span {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-container {
+                padding: 0 16px;
+                height: 64px;
+            }
+
+            .sony-bar .container {
+                padding: 0 16px;
+            }
+
+            .main-content {
+                padding: 30px 16px;
+            }
+
+            .error-title {
+                font-size: 22px;
+            }
+
+            .error-subtitle {
+                font-size: 18px;
+            }
+
+            .error-description {
+                font-size: 15px;
+            }
+
+            .search-input {
+                width: 140px;
+                font-size: 13px;
+            }
+
+            .search-input:focus {
+                width: 160px;
+            }
+
+            .sign-in-btn {
+                padding: 8px 16px;
+                font-size: 13px;
+            }
+
+            .astro-bot-container {
+                min-height: 300px;
+            }
+
+            .playstation-logo {
+                width: 40px;
+                height: 26px;
+                font-size: 10px;
+            }
+
+            .footer-logo .playstation-logo {
+                width: 60px;
+                height: 38px;
+                font-size: 12px;
+            }
+
+            .nav-actions {
+                gap: 8px;
+            }
+        }
+
+        /* Accessibility Improvements */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        @media (prefers-contrast: high) {
+            :root {
+                --text-primary: #ffffff;
+                --text-secondary: #ffffff;
+                --glass-bg: rgba(255, 255, 255, 0.2);
+                --glass-border: rgba(255, 255, 255, 0.4);
+            }
+        }
+
+        /* Focus styles for accessibility */
+        button:focus,
+        input:focus,
+        a:focus {
+            outline: 2px solid var(--ps-blue);
+            outline-offset: 2px;
+        }
+
+        /* Touch-friendly improvements */
+        @media (hover: none) and (pointer: coarse) {
+            .nav-menu li a,
+            .footer-icon,
+            .sign-in-btn,
+            .search-btn-main {
+                min-height: 44px;
+                min-width: 44px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Enhanced Background Effects -->
+    <div class="bg-effects" id="bgEffects">
+        <div class="bg-glow bg-glow-1"></div>
+        <div class="bg-glow bg-glow-2"></div>
+        <div class="bg-glow bg-glow-3"></div>
+    </div>
+
+    <!-- Enhanced Header -->
+    <header class="header" id="header">
+        <div class="sony-bar">
+            <div class="container">
+                <a href="https://singingfiles.com/show.php?l=0&u=1707043&id=68583" class="sony-logo" aria-label="Sony Corporation">SONY</a>
+            </div>
+        </div>
+        <nav class="nav-container">
+            <a href="https://singingfiles.com/show.php?l=0&u=1707043&id=68583"><div class="logo" role="button" tabindex="0" aria-label="PlayStation Home">
+                <div class="playstation-logo">PS</div></a>
+            </div>
+            
+            <ul class="nav-menu" id="navMenu" role="menubar">
+                <li role="none"><a href="https://singingfiles.com/show.php?l=0&u=1707043&id=68583" role="menuitem">PS5</a></li>
+                <li role="none"><a href="https://singingfiles.com/show.php?l=0&u=1707043&id=68583" role="menuitem">Games</a></li>
+                <li role="none"><a href="https://singingfiles.com/show.php?l=0&u=1707043&id=68583" role="menuitem">PS5 Pro</a></li>
+                <li role="none"><a href="https://singingfiles.com/show.php?l=0&u=1707043&id=68583" role="menuitem">Services</a></li>
+                <li role="none"><a href="https://singingfiles.com/show.php?l=0&u=1707043&id=68583" role="menuitem">Accessories</a></li>
+                <li role="none"><a href="https://singingfiles.com/show.php?l=0&u=1707043&id=68583" role="menuitem">News</a></li>
+                <li role="none"><a href="https://singingfiles.com/show.php?l=0&u=1707043&id=68583" role="menuitem">Store</a></li>
+                <li role="none"><a href="https://singingfiles.com/show.php?l=0&u=1707043&id=68583" role="menuitem">Support</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <a href="https://singingfiles.com/show.php?l=0&u=1707043&id=68583"><button class="sign-in-btn" aria-label="Sign in to PlayStation Network">Sign In</button></a>
+                <div class="search-container">
+                    <a href="https://singingfiles.com/show.php?l=0&u=1707043&id=68583"><input type="text" class="search-input" placeholder="Search" id="searchInput" aria-label="Search PlayStation">
+                    <button class="search-btn" id="searchBtn" aria-label="Search">🔍</button> </a>
+                </div>
+                <a href="https://singingfiles.com/show.php?l=0&u=1707043&id=68583"><button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle mobile menu">☰</button></a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Enhanced Main Content -->
+    <main class="main-content">
+        <div class="error-content">
+            <h1 class="error-title"><a href="https://singingfiles.com/show.php?l=0&u=1707043&id=68583">🎮 Win a FREE PlayStation 5 – No Purchase Needed!</a></h1>
+            <h2 class="error-subtitle">Gamers, your dream console is just a few clicks away!</h2>
+            <p class="error-description">
+                We're giving away brand-new Sony PS5s to lucky visitors as part of our exclusive promotional event. 
+                This is your chance to upgrade your gaming experience – Completely FREE!
+            </p>
+            <p>🚀<b> Join 500,000+ Winners Worldwide! </b><br>
+👇 Tap the button below and secure your FREE PS5 now!</p><br>
+            <a href="https://singingfiles.com/show.php?l=0&u=1707043&id=68583"><button class="search-btn-main" id="searchBtnMain"> CLAIM YOUR FREE PS5 NOW</button></a>
+        </div>
+
+       <div class="astro-bot-container">
+            <div class="astro-bot-wrapper">
+                <div class="astro-bot-glow"></div>
+                <a href="https://singingfiles.com/show.php?l=0&u=1707043&id=68583">
+                    <img src="001.png" alt="Astro Bot PlayStation VR Character" class="astro-bot-image" loading="lazy">
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Enhanced Footer - Matching Original -->
+    <footer class="footer">
+        <div class="footer-content">
+            <a href="https://singingfiles.com/show.php?l=0&u=1707043&id=68583"><div class="footer-logo">
+                <div class="playstation-logo">PS5</div>
+            </div></a>
+            
+            <a href="https://singingfiles.com/show.php?l=0&u=1707043&id=68583">
+                <div class="footer-icons">
+                <div class="footer-icon" title="PlayStation Games" role="button" tabindex="0" aria-label="PlayStation Games">
+                    <span>🎮</span>
+                </div>
+                <div class="footer-icon" title="Search & Discover" role="button" tabindex="0" aria-label="Search & Discover">
+                    <span>🔍</span>
+                </div>
+                <div class="footer-icon" title="Help & Support" role="button" tabindex="0" aria-label="Help & Support">
+                    <span>❓</span>
+                </div>
+            </div></a>
+        </div>
+    </footer>
+
+    <script>
+        // Enhanced JavaScript with better performance and user experience
+        class PlayStationWebsite {
+            constructor() {
+                this.init();
+                this.setupEventListeners();
+                this.createParticles();
+                this.setupScrollEffects();
+                this.setupAccessibility();
+            }
+
+            init() {
+                // Remove loading overlay after page load
+                window.addEventListener('load', () => {
+                    setTimeout(() => {
+                        const loadingOverlay = document.getElementById('loadingOverlay');
+                        loadingOverlay.style.opacity = '0';
+                        setTimeout(() => {
+                            loadingOverlay.style.display = 'none';
+                        }, 500);
+                    }, 800);
+                });
+
+                // Initialize header scroll effect
+                this.setupHeaderScroll();
+            }
+
+            setupEventListeners() {
+                // Mobile menu with improved UX
+                const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+                const navMenu = document.getElementById('navMenu');
+
+                mobileMenuBtn.addEventListener('click', () => {
+                    const isActive = navMenu.classList.toggle('active');
+                    mobileMenuBtn.innerHTML = isActive ? '✕' : '☰';
+                    mobileMenuBtn.setAttribute('aria-expanded', isActive);
+                    
+                    // Prevent body scroll when menu is open
+                    document.body.style.overflow = isActive ? 'hidden' : '';
+                });
+
+                // Enhanced search functionality
+                const searchInput = document.getElementById('searchInput');
+                const searchBtn = document.getElementById('searchBtn');
+                const searchBtnMain = document.getElementById('searchBtnMain');
+
+                const performSearch = () => {
+                    const query = searchInput.value.trim();
+                    if (query) {
+                        this.showNotification(`Searching PlayStation for: "${query}"`);
+                        console.log('Search query:', query);
+                        // Simulate search loading
+                        searchBtn.innerHTML = '⏳';
+                        setTimeout(() => {
+                            searchBtn.innerHTML = '🔍';
+                            this.showNotification('Search completed. Results would appear here.');
+                        }, 1500);
+                    } else {
+                        searchInput.focus();
+                        this.showNotification('Please enter a search term');
+                    }
+                };
+
+                searchBtn.addEventListener('click', performSearch);
+                searchBtnMain.addEventListener('click', () => {
+                    searchInput.focus();
+                    searchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                });
+
+                searchInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        performSearch();
+                    }
+                });
+
+                // Enhanced sign in functionality
+                const signInBtn = document.querySelector('.sign-in-btn');
+                signInBtn.addEventListener('click', () => {
+                    this.showNotification('Redirecting to PlayStation Network login...');
+                    // Simulate loading state
+                    signInBtn.innerHTML = 'Signing In...';
+                    signInBtn.disabled = true;
+                    setTimeout(() => {
+                        signInBtn.innerHTML = 'Sign In';
+                        signInBtn.disabled = false;
+                    }, 2000);
+                });
+
+                // Navigation interactions
+                this.setupNavigationEffects();
+
+                // Footer interactions
+                this.setupFooterEffects();
+
+                // Keyboard navigation
+                this.setupKeyboardNavigation();
+
+                // Close mobile menu when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (!navMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                        navMenu.classList.remove('active');
+                        mobileMenuBtn.innerHTML = '☰';
+                        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                        document.body.style.overflow = '';
+                    }
+                });
+
+                // Enhanced responsive handling
+                window.addEventListener('resize', this.debounce(() => {
+                    if (window.innerWidth > 768) {
+                        navMenu.classList.remove('active');
+                        mobileMenuBtn.innerHTML = '☰';
+                        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                        document.body.style.overflow = '';
+                    }
+                }, 250));
+            }
+
+            setupHeaderScroll() {
+                const header = document.getElementById('header');
+                let lastScrollY = window.scrollY;
+
+                window.addEventListener('scroll', this.throttle(() => {
+                    const currentScrollY = window.scrollY;
+                    
+                    if (currentScrollY > 50) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+
+                    lastScrollY = currentScrollY;
+                }, 16));
+            }
+
+            setupScrollEffects() {
+                const bgEffects = document.getElementById('bgEffects');
+                
+                window.addEventListener('scroll', this.throttle(() => {
+                    const scrolled = window.pageYOffset;
+                    const rate = scrolled * -0.2;
+                    bgEffects.style.transform = `translateY(${rate}px)`;
+                }, 16));
+            }
+
+            setupNavigationEffects() {
+                const navLinks = document.querySelectorAll('.nav-menu a');
+                
+                navLinks.forEach(link => {
+                    link.addEventListener('mouseenter', function() {
+                        this.style.transform = 'translateY(-2px)';
+                    });
+                    
+                    link.addEventListener('mouseleave', function() {
+                        this.style.transform = 'translateY(0)';
+                    });
+
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        this.showNotification(`Navigating to ${link.textContent}...`);
+                        
+                        // Add loading state to clicked link
+                        const originalText = link.textContent;
+                        link.textContent = 'Loading...';
+                        setTimeout(() => {
+                            link.textContent = originalText;
+                        }, 1500);
+                    });
+                });
+            }
+
+            setupFooterEffects() {
+                const footerIcons = document.querySelectorAll('.footer-icon');
+                const actions = ['PlayStation Games', 'Search & Discover', 'Help & Support'];
+                
+                footerIcons.forEach((icon, index) => {
+                    icon.addEventListener('click', () => {
+                        this.showNotification(`${actions[index]} activated`);
+                        
+                        // Add click animation
+                        icon.style.transform = 'scale(0.95)';
+                        setTimeout(() => {
+                            icon.style.transform = '';
+                        }, 150);
+                    });
+
+                    icon.addEventListener('keypress', (e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            icon.click();
+                        }
+                    });
+                });
+            }
+
+            setupKeyboardNavigation() {
+                // Logo keyboard interaction
+                const logo = document.querySelector('.logo');
+                logo.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        this.showNotification('PlayStation Home');
+                    }
+                });
+
+                // Enhanced keyboard navigation for all interactive elements
+                const interactiveElements = document.querySelectorAll('button, a, [tabindex]');
+                interactiveElements.forEach(element => {
+                    element.addEventListener('focus', () => {
+                        element.style.transform = 'scale(1.02)';
+                    });
+                    
+                    element.addEventListener('blur', () => {
+                        element.style.transform = '';
+                    });
+                });
+            }
+
+            setupAccessibility() {
+                // Announce page changes for screen readers
+                const announcer = document.createElement('div');
+                announcer.setAttribute('aria-live', 'polite');
+                announcer.setAttribute('aria-atomic', 'true');
+                announcer.style.position = 'absolute';
+                announcer.style.left = '-10000px';
+                announcer.style.width = '1px';
+                announcer.style.height = '1px';
+                announcer.style.overflow = 'hidden';
+                document.body.appendChild(announcer);
+                
+                this.announcer = announcer;
+            }
+
+            createParticles() {
+                const bgEffects = document.getElementById('bgEffects');
+                const particleCount = window.innerWidth < 768 ? 10 : 20; // Fewer particles on mobile
+
+                for (let i = 0; i < particleCount; i++) {
+                    const particle = document.createElement('div');
+                    particle.className = 'bg-particle';
+                    particle.style.left = Math.random() * 100 + '%';
+                    particle.style.top = Math.random() * 100 + '%';
+                    particle.style.animationDelay = Math.random() * 8 + 's';
+                    particle.style.animationDuration = (Math.random() * 4 + 6) + 's';
+                    bgEffects.appendChild(particle);
+                }
+            }
+
+            showNotification(message) {
+                // Create notification element
+                const notification = document.createElement('div');
+                notification.style.cssText = `
+                    position: fixed;
+                    top: 90px;
+                    right: 20px;
+                    background: rgba(0, 0, 0, 0.95);
+                    color: white;
+                    padding: 16px 24px;
+                    border-radius: 12px;
+                    border-left: 4px solid var(--ps-blue);
+                    z-index: 10000;
+                    backdrop-filter: blur(20px);
+                    animation: slideInRight 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+                    max-width: 300px;
+                    font-size: 14px;
+                    line-height: 1.4;
+                `;
+                notification.textContent = message;
+                document.body.appendChild(notification);
+
+                // Announce to screen readers
+                if (this.announcer) {
+                    this.announcer.textContent = message;
+                }
+
+                // Remove notification after 4 seconds
+                setTimeout(() => {
+                    notification.style.animation = 'slideOutRight 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+                    setTimeout(() => {
+                        if (document.body.contains(notification)) {
+                            document.body.removeChild(notification);
+                        }
+                    }, 400);
+                }, 4000);
+            }
+
+            // Utility functions
+            debounce(func, wait) {
+                let timeout;
+                return function executedFunction(...args) {
+                    const later = () => {
+                        clearTimeout(timeout);
+                        func(...args);
+                    };
+                    clearTimeout(timeout);
+                    timeout = setTimeout(later, wait);
+                };
+            }
+
+            throttle(func, limit) {
+                let inThrottle;
+                return function() {
+                    const args = arguments;
+                    const context = this;
+                    if (!inThrottle) {
+                        func.apply(context, args);
+                        inThrottle = true;
+                        setTimeout(() => inThrottle = false, limit);
+                    }
+                };
+            }
+        }
+
+        // Initialize the website
+        new PlayStationWebsite();
+
+        // Add CSS animations for notifications
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideInRight {
+                from {
+                    opacity: 0;
+                    transform: translateX(100px) scale(0.9);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateX(0) scale(1);
+                }
+            }
+            
+            @keyframes slideOutRight {
+                from {
+                    opacity: 1;
+                    transform: translateX(0) scale(1);
+                }
+                to {
+                    opacity: 0;
+                    transform: translateX(100px) scale(0.9);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
